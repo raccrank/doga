@@ -24,29 +24,29 @@ if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
 # Users are instructed to view the designer's WhatsApp Catalog to see images/previews.
 PRODUCT_CATALOG = {
     "1": {
-        "name": "A0 Poster (84.1cm x 118.9cm)",
-        "price": 1500.00,
-        "catalog_item_id": "catalog_a0_001"
+        "name": "https://wa.me/p/32444440828502644/254754597946",
+        "price": 1500.00
+       
     },
     "2": {
-        "name": "A1 Poster (59.4cm x 84.4cm)",
-        "price": 1200.00,
-        "catalog_item_id": "catalog_a1_001"
+        "name": "https://wa.me/p/25293719003556275/254754597946",
+        "price": 1200.00
+        
     },
     "3": {
-        "name": "A2 Poster (42cm x 59.4cm)",
-        "price": 900.00,
-        "catalog_item_id": "catalog_a2_001"
+        "name": "https://wa.me/p/32223331983949052/254754597946",
+        "price": 900.00
+       
     },
     "4": {
-        "name": "A3 Poster (29.7cm x 42cm)",
-        "price": 600.00,
-        "catalog_item_id": "catalog_a3_001"
+        "name": "https://wa.me/p/32327837460165064/254754597946",
+        "price": 600.00
+        
     },
     "5": {
-        "name": "A4 Poster (21cm x 29.7cm)",
-        "price": 400.00,
-        "catalog_item_id": "catalog_a4_001"
+        "name": "https://wa.me/p/25442241375373277/254754597946",
+        "price": 400.00
+        
     }
 }
 
@@ -164,11 +164,10 @@ def webhook():
     # Show menu: list products and instruct user how to order via the WhatsApp Catalog item id.
     if lower_msg == 'menu':
         menu_text = "Welcome to Doga's Graphic Design services.\n"
-        menu_text += "We keep images in our WhatsApp Catalog (open our profile -> Catalog).\n"
-        menu_text += "Reply with: order <PRODUCT_ID_OR_CATALOG_ID>\n\n"
+        menu_text += "Reply with number to order\n\n"
         for pid, details in PRODUCT_CATALOG.items():
-            menu_text += f"{pid}. {details['name']} - KES {details['price']:.2f} (catalog id: {details['catalog_item_id']})\n"
-        menu_text += "\nExample: order 1  OR  order catalog_a0_001"
+            menu_text += f"{pid}. {details['name']} - KES {details['price']:.2f}\n"
+        menu_text += "\nExample: order 1"
         msg.body(menu_text)
         return str(resp)
 
@@ -178,7 +177,7 @@ def webhook():
         try:
             requested = tokens[1]
         except IndexError:
-            msg.body("Please specify a product ID. Example: 'order 1' or 'order catalog_a0_001'")
+            msg.body("Please specify a product ID. Example: 'order 1'")
             return str(resp)
 
         # Find product by key or by catalog_item_id
@@ -186,7 +185,7 @@ def webhook():
         if not product:
             # search by catalog_item_id
             for pid, v in PRODUCT_CATALOG.items():
-                if v.get('catalog_item_id') == requested:
+                if v.get('name') == requested:
                     product = v
                     requested = pid  # normalize to product id
                     break
@@ -271,7 +270,7 @@ def webhook():
     if incoming_msg in PRODUCT_CATALOG:
         p = PRODUCT_CATALOG[incoming_msg]
         reply = (f"To view images and full details, open our WhatsApp profile -> Catalog.\n"
-                 f"Look for: {p['name']}\nCatalog ID: {p['catalog_item_id']}\n"
+                 f"Look for: {p['name']}\nCatalog ID: {p['name']}\n"
                  f"If this is the one you want, reply: order {incoming_msg}")
         msg.body(reply)
         return str(resp)
@@ -295,3 +294,4 @@ def webhook():
 if __name__ == "__main__":
     init_db() 
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+

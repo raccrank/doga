@@ -30,22 +30,26 @@ PRODUCT_CATALOG = {
        
     },
     "2": {
-        "name": "https://wa.me/p/25293719003556275/254754597946",
+        "name": "A1 Poster (59.4cm x 84.4cm)"
+        "https://wa.me/p/25293719003556275/254754597946",
         "price": 1200.00
         
     },
     "3": {
-        "name": "https://wa.me/p/32223331983949052/254754597946",
+        "name": "A2 Poster (42cm x 59.4cm)"
+        "https://wa.me/p/32223331983949052/254754597946",
         "price": 900.00
        
     },
     "4": {
-        "name": "https://wa.me/p/32327837460165064/254754597946",
+        "name": "A3 Poster (29.7cm x 42cm)"
+        "https://wa.me/p/32327837460165064/254754597946",
         "price": 600.00
         
     },
     "5": {
-        "name": "https://wa.me/p/25442241375373277/254754597946",
+        "name": "A4 Poster (21cm x 29.7cm)"
+        "https://wa.me/p/25442241375373277/254754597946",
         "price": 400.00
         
     }
@@ -295,6 +299,7 @@ def webhook():
 if __name__ == "__main__":
     init_db() 
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 
 

@@ -20,12 +20,14 @@ if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
     twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 # Product catalog: Corrected dictionary structure to include the 'url' key.
+# Product catalog: Corrected dictionary structure to include the 'url' key.
 PRODUCT_CATALOG = {
-    "1": {
-   "name": "A0 Poster (84.1cm x 118.9cm)",
-   "url": "https://wa.me/p/32444440828502644/254754597946",
-   "price": 1500.00
-    },
+    "1": {  # <--- Ensure there are only standard spaces/tabs before this line
+        "name": "A0 Poster (84.1cm x 118.9cm)",
+        "url": "https://wa.me/p/32444440828502644/254754597946",
+        "price": 1500.00
+    },
+    # ... rest of the catalog items
     "2": {
    "name": "A1 Poster (59.4cm x 84.4cm)",
    "url": "https://wa.me/p/25293719003556275/254754597946",
@@ -240,5 +242,6 @@ persistent_action=[
 if __name__ == "__main__":
     init_db() 
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 
 

@@ -24,7 +24,8 @@ if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
 # Users are instructed to view the designer's WhatsApp Catalog to see images/previews.
 PRODUCT_CATALOG = {
     "1": {
-        "name": "https://wa.me/p/32444440828502644/254754597946",
+        "name": "A0 Poster (84.1cm x 118.9cm)",
+        "https://wa.me/p/32444440828502644/254754597946",
         "price": 1500.00
        
     },
@@ -294,4 +295,5 @@ def webhook():
 if __name__ == "__main__":
     init_db() 
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
 

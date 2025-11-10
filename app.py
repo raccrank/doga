@@ -11,13 +11,13 @@ DB_NAME = 'orders.db'
 
 TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID')
 TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN')
-TWILIO_WHATSAPP_NUMBER = os.environ.get('TWILIO_WHATSAPP_NUMBER')  # e.g. 'whatsapp:+1234567890'
-TWILIO_DESIGNER_NUMBER = os.environ.get('TWILIO_DESIGNER_NUMBER')  # designer's whatsapp number, e.g. 'whatsapp:+1987654321'
+TWILIO_WHATSAPP_NUMBER = os.environ.get('TWILIO_WHATSAPP_NUMBER')  # e.g. 'whatsapp:+1234567890'
+TWILIO_DESIGNER_NUMBER = os.environ.get('TWILIO_DESIGNER_NUMBER')  # designer's whatsapp number, e.g. 'whatsapp:+1987654321'
 
 # Twilio REST client (only created if creds are present)
 twilio_client = None
 if TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN:
-    twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+    twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
 # Product catalog: Corrected dictionary structure to include the 'url' key.
 PRODUCT_CATALOG = {
@@ -240,3 +240,4 @@ def webhook():
 if __name__ == "__main__":
     init_db() 
     app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
